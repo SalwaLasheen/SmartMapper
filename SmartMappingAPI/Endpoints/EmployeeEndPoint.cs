@@ -33,19 +33,29 @@ namespace SmartMappingAPI
             builder.MapGet("/GetEmployeeByIdMapper/{id}", (int employeeId, IMapper mapper) =>
             {
 
-                var wsdlEmployee = SeedWsdlEmployeesData().First(x => x.EmpId == employeeId);      
+                var wsdlEmployee = SeedWsdlEmployeesData().First(x => x.EmpId == employeeId);
                 var empDto = mapper.Map<EmployeeWsdlRequest, EmployeeSecureRequestMapper>(wsdlEmployee);
                 return Results.Ok(empDto);
             }).WithName("GetEmployeeByIdMapper");
 
             #endregion
 
+            #region Mapster
+            //TODO
+
+            //builder.MapGet("/GetEmployeeByIdMapster/{id}", (int employeeId, IMapper mapper) =>
+            //{
+
+            //    var wsdlEmployee = SeedWsdlEmployeesData().First(x => x.EmpId == employeeId);
+            //    var x =wsdlEmployee.BuildAdapter<EmployeeSecureRequestMapper>()
+            //    var empDto = mapper.Map<EmployeeWsdlRequest, EmployeeSecureRequestMapper>(wsdlEmployee);
+            //    return Results.Ok(empDto);
+            //}).WithName("GetEmployeeByIdMapster");
 
 
+            #endregion
 
-
-
-
+            #region GetAllEmployees
             builder.MapGet("/GetAllEmployees", (IMapper mapper) =>
             {
 
@@ -53,7 +63,7 @@ namespace SmartMappingAPI
 
                 return Results.Ok(allEmployeesDto);
             }).WithName("GetAllEmployees"); ;
-
+            #endregion
 
             SeedWsdlEmployeesData();
 
@@ -102,5 +112,6 @@ namespace SmartMappingAPI
             return employess;
         }
     }
-
 }
+
+

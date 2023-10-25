@@ -1,18 +1,21 @@
-﻿using Newtonsoft.Json;
+﻿using Domain;
+using Newtonsoft.Json;
 
 namespace DTOs
 {
     public class EmployeeSecureRequestJson
     {
 
-        [JsonProperty("EmpId")]
+        [JsonProperty(nameof(EmployeeWsdlRequest.EmpId))]
         public int EmployeeId { get; set; }
-        [JsonProperty("FName")]
+        [JsonProperty(nameof(EmployeeWsdlRequest.FName))]
         public string FirstName { get; set; }
-        [JsonProperty("LName")]
+        [JsonProperty(nameof(EmployeeWsdlRequest.LName))]
         public string LastName { get; set; }
         public string Email { get; set; }
-        [JsonProperty("phone")]
+        [JsonProperty(nameof(EmployeeWsdlRequest.phone))]
         public string Phonenumber { get; set; }
+        [JsonProperty(nameof(EmployeeWsdlRequest.Addresses))]
+        public ICollection<AddressDtoJson> Address { get; set; }
     }
 }
